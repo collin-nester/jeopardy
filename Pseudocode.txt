@@ -1,7 +1,7 @@
-Create a list of the categories (Collin)
 Create a score variable (Collin)
-Create a dictionary of the questions, formatted as "category dollar amount: question" (Collin)
-Create a dictionary of the answers, formatted as "category dollar amount: answer" (Collin)
+Create a list of the categories (Collin)
+Create a dictionary of the questions, formatted as "category dollar amount~ question" (Collin)
+Create a dictionary of the answers, formatted as "category dollar amount~ answer" (Collin)
 While categories remain:
     Ask user what category number they want, formatted as "1: category, 2: category..." (Negus)
     Ask user what dollar value they want from that category, formatted as "$200, $400..."  (Probably do this together)
