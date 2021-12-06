@@ -7,25 +7,36 @@ score = 0
 with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/categories_formatted.txt', 'r') as reader:
     categories_list = reader.readlines()
 
-def questions_dictionary_creation():
-    questions_dictionary = {}
-    with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/questions_formatted.txt', 'r') as reader:
-        for line in reader:
-            key, value = line.split("~")
-            questions_dictionary[key] = value
+questions_dictionary_creation():
+questions_dictionary = {}
+with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/questions_formatted.txt', 'r') as reader:
+    for line in reader:
+        key, value = line.split("~")
+        questions_dictionary[key] = value
 
-def answers_dictionary_creation():
-    answers_dictionary = {}
-    with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/answers_formatted.txt', 'r') as reader:
-        for line in reader:
-            key, value = line.split("~")
-            answers_dictionary[key] = value
-
+answers_dictionary_creation():
+answers_dictionary = {}
+with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/answers_formatted.txt', 'r') as reader:
+    for line in reader:
+        key, value = line.split("~")
+        answers_dictionary[key] = value
+ 
+dollar_dictionary = {}
+with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/dollars_formatted.txt', 'r') as reader:
+    for line in reader:
+        key, value = line.split("~")
+        dollar_dictionary[key] = value
+            
+            
 def ask_category():
-    pass
-
+    Category = input("Choose a category: " + categories_list)
+    for i in catgories_list:
+        if Category[2:5] == i[2:5]:
+            Category == i
+    
 def ask_dollar_amount():
-    pass
+    for i in questions_dictionary:
+        Dollar_amount = list[$200, $400, $600, $800, $1000]
 
 def ask_question():
     pass
