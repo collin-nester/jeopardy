@@ -41,7 +41,7 @@ def ask_dollar_amount():
     #output question as question + dollar amount
 
 def ask_question():
-    pass
+    Answer = input(question)
 
 def check_answer():
     if answer == True:
@@ -53,9 +53,10 @@ def check_answer():
         score -= dollar_amount
         print(score)
         
-
 def remove_question():
-    pass
+    question_dictionary.remove(question)
+    answer_dictionary.remove(answer)
+    dollar_dictionary.remove(dollar_amount)
 
 def category_removal():
     pass
