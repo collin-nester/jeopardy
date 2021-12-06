@@ -7,14 +7,12 @@ score = 0
 with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/categories_formatted.txt', 'r') as reader:
     categories_list = reader.readlines()
 
-questions_dictionary_creation():
 questions_dictionary = {}
 with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/questions_formatted.txt', 'r') as reader:
     for line in reader:
         key, value = line.split("~")
         questions_dictionary[key] = value
 
-answers_dictionary_creation():
 answers_dictionary = {}
 with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/answers_formatted.txt', 'r') as reader:
     for line in reader:
@@ -30,13 +28,17 @@ with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/dollars_format
             
 def ask_category():
     Category = input("Choose a category: " + categories_list)
-    for i in catgories_list:
+    for i in categories_list:
         if Category[2:5] == i[2:5]:
             Category == i
     
 def ask_dollar_amount():
     for i in questions_dictionary:
-        Dollar_amount = list[$200, $400, $600, $800, $1000]
+        pass
+    
+    Dollar_amount = input("Choose a dollar amount: " + )
+
+    #output question as question + dollar amount
 
 def ask_question():
     pass
@@ -53,8 +55,6 @@ def category_removal():
 def game_end():
     pass
 
-questions_dictionary_creation()
-answers_dictionary_creation()
 while len(categories_list) > 0:
     ask_category()
     ask_dollar_amount()
