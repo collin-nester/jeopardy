@@ -44,7 +44,15 @@ def ask_question():
     pass
 
 def check_answer():
-    pass
+    if answer == True:
+        print("Answer is correct. Good job! ")
+        score += dollar_amount
+        print(score)
+    if answer == False:
+        print("Incorrect. The answer was " + answer)
+        score -= dollar_amount
+        print(score)
+        
 
 def remove_question():
     pass
