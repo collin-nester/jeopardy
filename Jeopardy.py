@@ -30,45 +30,49 @@ for i, j in enumerate(categories_list):
         dollar_list.append(str(j) + " " + str(200 * ( k + 1 )))
             
 def ask_category():
+    global category
     category = input("Choose a category: " + str(categories_list) + " ")
     for i in categories_list:
         if category[2:5] == i[2:5]:
             category == i
     
 def ask_dollar_amount():
-    
-    dollar_amount = input("Choose a dollar amount: " + str(score))
+    global current_question, real_answer
+    global dollar_amount
+    dollar_amount = int(input("Choose a dollar amount: " + str(score)))
 
-    question_reference = str(category) + str(dollar_amount)
+    question_reference = str(category) + " " + str(dollar_amount)
     real_answer = answers_dictionary[question_reference]
     current_question = questions_dictionary[question_reference]
     
 def ask_question():
-    answer = input(current_question)
+    global correctness
+    answer = input(current_question + " ")
     if real_answer.lower() in answer.lower():
         correctness = True
     else:
         correctness = False
 
 def check_answer():
+    global score
     if correctness == True:
         print("Answer is correct. Good job! ")
         score += dollar_amount
         print(score)
     if correctness == False:
-        print("Incorrect. The answer was " + answer)
+        print("Incorrect. The answer was " + real_answer)
         score -= dollar_amount
         print(score)
         
 def remove_question():
-    questions_dictionary.remove(question)
-    answers_dictionary.remove(answer)
-    dollar_list.remove(dollar_amount)
+    questions_dictionary.remove(questions_dictionary)
+    answers_dictionary.remove(questions_dictionary)
+    dollar_list.remove(questions_dictionary)
 
 def category_removal():
-    for i in category_list:
+    for i in categories_list:
         if i not in dollar_list:
-            category_list.remove(i)
+            categories_list.remove(i)
 
 def game_end():
     pass
