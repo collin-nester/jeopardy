@@ -7,59 +7,68 @@ score = 0
 with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/categories_formatted.txt', 'r') as reader:
     categories_list = reader.readlines()
 
+for i, k in enumerate(categories_list):
+    categories_list[i] = categories_list[i].strip()
+
 questions_dictionary = {}
 with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/questions_formatted.txt', 'r') as reader:
     for line in reader:
         key, value = line.split("~")
+        value = value.strip()
         questions_dictionary[key] = value
 
 answers_dictionary = {}
 with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/answers_formatted.txt', 'r') as reader:
     for line in reader:
         key, value = line.split("~")
+        value = value.strip()
         answers_dictionary[key] = value
  
-dollar_dictionary = {}
-with open('/Users/collinnester24/Documents/python/GitHub/Jeopardy/dollars_formatted.txt', 'r') as reader:
-    for line in reader:
-        key, value = line.split("~")
-        dollar_dictionary[key] = value
-            
+dollar_list = []
+for i, j in enumerate(categories_list):
+    for k in range(5):
+        dollar_list.append(str(j) + " " + str(200 * ( k + 1 )))
             
 def ask_category():
-    Category = input("Choose a category: " + categories_list)
+    category = input("Choose a category: " + str(categories_list) + " ")
     for i in categories_list:
-        if Category[2:5] == i[2:5]:
-            Category == i
+        if category[2:5] == i[2:5]:
+            category == i
     
 def ask_dollar_amount():
-    for i in questions_dictionary:
-        pass
     
-    Dollar_amount = input("Choose a dollar amount: " + )
+    dollar_amount = input("Choose a dollar amount: " + str(score))
 
-    #output question as question + dollar amount
-
+    question_reference = str(category) + str(dollar_amount)
+    real_answer = answers_dictionary[question_reference]
+    current_question = questions_dictionary[question_reference]
+    
 def ask_question():
-    Answer = input(question)
+    answer = input(current_question)
+    if real_answer.lower() in answer.lower():
+        correctness = True
+    else:
+        correctness = False
 
 def check_answer():
-    if answer == True:
+    if correctness == True:
         print("Answer is correct. Good job! ")
         score += dollar_amount
         print(score)
-    if answer == False:
+    if correctness == False:
         print("Incorrect. The answer was " + answer)
         score -= dollar_amount
         print(score)
         
 def remove_question():
-    question_dictionary.remove(question)
-    answer_dictionary.remove(answer)
-    dollar_dictionary.remove(dollar_amount)
+    questions_dictionary.remove(question)
+    answers_dictionary.remove(answer)
+    dollar_list.remove(dollar_amount)
 
 def category_removal():
-    pass
+    for i in category_list:
+        if i not in dollar_list:
+            category_list.remove(i)
 
 def game_end():
     pass
