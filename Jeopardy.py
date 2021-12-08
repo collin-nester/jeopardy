@@ -71,7 +71,7 @@ def remove_question():
 
 def category_removal():
     print(dollar_list)
-    for i in dollar_list:
+    for i in questions_dictionary:
         if category not in i[0:len(category)]:
             categories_list.remove(category)
 
