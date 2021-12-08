@@ -76,7 +76,7 @@ def category_removal():
             categories_list.remove(i)
 
 def game_end():
-    pass
+   print("Thanks for playing Jeopardy. Your total earnings for this game are " + str(score))
 
 while len(categories_list) > 0:
     ask_category()
