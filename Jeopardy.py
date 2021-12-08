@@ -34,10 +34,10 @@ def ask_category():
     category = input("Choose a category: " + str(categories_list) + " ")
     for i in categories_list:
         if category[2:5] == i[2:5]:
-            category == i
+            category = i
     
 def ask_dollar_amount():
-    global current_question, real_answer, dollar_amount
+    global current_question, real_answer, dollar_amount, question_reference
     dollar_amount = int(input("Choose a dollar amount: " + str(score)))
 
     question_reference = str(category) + " " + str(dollar_amount)
@@ -62,13 +62,15 @@ def check_answer():
         print("Incorrect. The answer was " + real_answer)
         score -= dollar_amount
         print(score)
+    #You don't really need to do anything before this: just change it so it prints what question 
         
 def remove_question():
-    questions_dictionary.remove(questions_dictionary)
-    answers_dictionary.remove(questions_dictionary)
-    dollar_list.remove(questions_dictionary)
+    del questions_dictionary[question_reference]
+    del answers_dictionary[question_reference]
+    dollar_list.remove(question_reference)
 
 def category_removal():
+    print(dollar_list)
     for i in categories_list:
         if i not in dollar_list:
             categories_list.remove(i)
