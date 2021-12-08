@@ -29,17 +29,26 @@ for i, j in enumerate(categories_list):
     for k in range(5):
         dollar_list.append(str(j) + " " + str(200 * ( k + 1 )))
             
+def game_start_and_rules():
+    pass
+
 def ask_category():
     global category
-    category = input("Choose a category: " + str(categories_list) + " ")
+    category = input("Choose a category: " + str(", ".join(categories_list) + "    "))
     for i in categories_list:
         if category[2:5] == i[2:5]:
             category = i
     
 def ask_dollar_amount():
     global current_question, real_answer, dollar_amount, question_reference
-    dollar_amount = int(input("Choose a dollar amount: " + str(score)))
-
+    current_dollar_availability = []
+    for i in dollar_list:
+        if category in i:
+            if i[-3:] == "000":
+                current_dollar_availability.append(i[-4:])
+            else:
+                current_dollar_availability.append(i[-3:])
+    dollar_amount = int(input("Choose a dollar amount: $" + str(", $".join(current_dollar_availability) + "    ")))
     question_reference = str(category) + " " + str(dollar_amount)
     real_answer = answers_dictionary[question_reference]
     current_question = questions_dictionary[question_reference]
@@ -57,12 +66,11 @@ def check_answer():
     if correctness == True:
         print("Answer is correct. Good job! ")
         score += dollar_amount
-        print(score)
+        print("$" + str(score))
     if correctness == False:
         print("Incorrect. The answer was " + real_answer)
         score -= dollar_amount
-        print(score)
-    #You don't really need to do anything before this: just change it so it prints what question dollar values are left
+        print("$" + str(score))
         
 def remove_question():
     del questions_dictionary[question_reference]
@@ -83,6 +91,7 @@ def game_end():
     if score < 0:
         print("Thanks for playing Jeopardy. You lost $" + str(score))
 
+game_start_and_rules()
 while len(categories_list) > 0:
     ask_category()
     ask_dollar_amount()
