@@ -37,8 +37,7 @@ def ask_category():
             category == i
     
 def ask_dollar_amount():
-    global current_question, real_answer
-    global dollar_amount
+    global current_question, real_answer, dollar_amount
     dollar_amount = int(input("Choose a dollar amount: " + str(score)))
 
     question_reference = str(category) + " " + str(dollar_amount)
