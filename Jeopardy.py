@@ -62,7 +62,7 @@ def check_answer():
         print("Incorrect. The answer was " + real_answer)
         score -= dollar_amount
         print(score)
-    #You don't really need to do anything before this: just change it so it prints what question 
+    #You don't really need to do anything before this: just change it so it prints what question dollar values are left
         
 def remove_question():
     del questions_dictionary[question_reference]
@@ -71,9 +71,9 @@ def remove_question():
 
 def category_removal():
     print(dollar_list)
-    for i in categories_list:
-        if i not in dollar_list:
-            categories_list.remove(i)
+    for i in dollar_list:
+        if category not in i[0:len(category)]:
+            categories_list.remove(category)
 
 def game_end():
     if score >= 0:
