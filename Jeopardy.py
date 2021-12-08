@@ -1,6 +1,6 @@
 #Collin and Negus' Jeopardy! game.
 #Credit to Merv Griffin for inventing Jeopardy
-#Credit to no one so far for borrowing pieces of code
+#Credit to kite.com for the dictionary creation method code
 
 score = 0
 
