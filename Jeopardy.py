@@ -70,10 +70,12 @@ def remove_question():
     dollar_list.remove(question_reference)
 
 def category_removal():
-    print(dollar_list)
+    n = 0
     for i in questions_dictionary:
-        if category not in i[0:len(category)]:
-            categories_list.remove(category)
+        if category in i[0:len(category)]:
+            n += 1
+    if n == 0:
+        categories_list.remove(category)
 
 def game_end():
     if score >= 0:
