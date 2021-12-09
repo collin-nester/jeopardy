@@ -30,14 +30,26 @@ for i, j in enumerate(categories_list):
         dollar_list.append(str(j) + " " + str(200 * ( k + 1 )))
             
 def game_start_and_rules():
-    pass
+    print("Welcome to Jeopardy! This is only basic Jeopardy, no Daily Doubles, Double Jeopardy, or Final Jeopardy.")
+    print("The program will ask you to choose a category, and you should fully type in which one you want.")
+    print("You will then be asked to type in the dollar amount. No need to type the dollar sign ($), just the number.")
+    print("It will ask you the question, and you should type in what you think the answer is. Capitilization does not matter, but spelling does.")
+    print("You win money for correct answers and lose money for wrong ones. The game ends when you run out of questions.")
+    print("Have fun!")
 
 def ask_category():
     global category
-    category = input("Choose a category: " + str(", ".join(categories_list) + "    "))
-    for i in categories_list:
-        if category[2:5] == i[2:5]:
-            category = i
+    g = 0
+    while g != 1:
+        category = input("Choose a category: " + str(", ".join(categories_list) + "    "))
+        for i in categories_list:
+            if category[2:5] == i[2:5]:
+                category = i
+                g = 1
+        if g != 1:
+            print("Error, please enter a category. ")
+            
+        
     
 def ask_dollar_amount():
     global current_question, real_answer, dollar_amount, question_reference
@@ -48,7 +60,14 @@ def ask_dollar_amount():
                 current_dollar_availability.append(i[-4:])
             else:
                 current_dollar_availability.append(i[-3:])
-    dollar_amount = int(input("Choose a dollar amount: $" + str(", $".join(current_dollar_availability) + "    ")))
+    g = 0
+    while g != 1:
+        dollar_amount = input("Choose a dollar amount: $" + str(", $".join(current_dollar_availability) + "    "))
+        if dollar_amount in current_dollar_availability:
+            dollar_amount = int(dollar_amount)
+            g = 1
+        if g != 1:
+            print("Please choose an available dollar amount. ")
     question_reference = str(category) + " " + str(dollar_amount)
     real_answer = answers_dictionary[question_reference]
     current_question = questions_dictionary[question_reference]
