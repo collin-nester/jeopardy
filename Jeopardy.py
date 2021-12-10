@@ -2,7 +2,7 @@
 #Credit to Merv Griffin for inventing Jeopardy
 #Credit to kite.com for the dictionary creation method code
 #What Negus did: game_start_and_rules, ask_question, check_answer, game_end
-#What Collin did: dictionary and list creation, category_removal
+#What Collin did: dictionary and list creation, category_removal, format for categories/questions
 #What we both did: ask_category, ask_dollar_amount, remove_question
 #Pseudocode and Brainstorm were both of us
 
