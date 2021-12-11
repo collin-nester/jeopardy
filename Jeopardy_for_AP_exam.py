@@ -108,17 +108,13 @@ def ask_dollar_amount():
     question_reference = str(category) + " " + str(dollar_amount)
     real_answer = answers_dictionary[question_reference]
     current_question = questions_dictionary[question_reference]
-    
-#Defines the function which asks the user the question
-#and sets the answer variable equal to it
-def ask_question():
-    global answer
-    answer = input(current_question + " ")
 
 #Defines the function which checks if the the answer is
 #correct and either adds or subtracts the number of points
-#from the score variable and prints the score
-def check_answer():
+#from the score variable and prints the score. It also 
+#removes the current category from the category list if 
+#there are no more questions in that catergory
+def check_answer_and_category_and_question_removal(answer):
     global score
     if real_answer.lower() in answer.lower():
         correctness = True
@@ -132,24 +128,16 @@ def check_answer():
         print("Incorrect. The answer was " + real_answer)
         score -= dollar_amount
         print("$" + str(score))
-        
-#This defines the function which removes the question,
-#answer, and dollar amounts from their respective lists
-def remove_question():
     del questions_dictionary[question_reference]
     del answers_dictionary[question_reference]
     dollar_list.remove(question_reference)
-
-#This defines the function which removes the current
-#category from the category list if there are no more
-#questions in that catergory
-def category_removal():
     n = 0
     for i in questions_dictionary:
         if category in i[0:len(category)]:
             n += 1
     if n == 0:
         categories_list.remove(category)
+        
 
 #This defines the function which prints the score and an
 #ending message at the end of the game
@@ -165,8 +153,6 @@ game_start_and_rules()
 while len(categories_list) > 0:
     ask_category()
     ask_dollar_amount()
-    ask_question()
-    check_answer()
-    remove_question()
-    category_removal()
+    answer = input(current_question + " ")
+    check_answer_and_category_and_question_removal(answer)
 game_end()
